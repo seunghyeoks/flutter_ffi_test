@@ -22,7 +22,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     sumResult = file_access_through_golang.sum(1, 2);
-    sumAsyncResult = file_access_through_golang.sumAsync(3, 4);
   }
 
   @override

@@ -1,6 +1,8 @@
 // ignore_for_file: always_specify_types
 // ignore_for_file: camel_case_types
 // ignore_for_file: non_constant_identifier_names
+// ignore_for_file: unused_field
+// ignore_for_file: unused_element
 
 // AUTO GENERATED FILE, DO NOT EDIT.
 //
@@ -8,10 +10,7 @@
 // ignore_for_file: type=lint
 import 'dart:ffi' as ffi;
 
-/// Bindings for `src/file_access_through_golang.h`.
-///
-/// Regenerate bindings with `dart run ffigen --config ffigen.yaml`.
-///
+/// Bindings for 'src/libsum.h'.
 class FileAccessThroughGolangBindings {
   /// Holds the symbol lookup function.
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
@@ -27,11 +26,6 @@ class FileAccessThroughGolangBindings {
           lookup)
       : _lookup = lookup;
 
-  /// A very short-lived native function.
-  ///
-  /// For very short-lived functions, it is fine to call them on the main isolate.
-  /// They will block the Dart execution while running the native function, so
-  /// only do this for native functions which are guaranteed to be short-lived.
   int sum(
     int a,
     int b,
@@ -43,28 +37,39 @@ class FileAccessThroughGolangBindings {
   }
 
   late final _sumPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
-          'sum');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>('sum');
   late final _sum = _sumPtr.asFunction<int Function(int, int)>();
 
-  /// A longer lived native function, which occupies the thread calling it.
-  ///
-  /// Do not call these kind of native functions in the main isolate. They will
-  /// block Dart execution. This will cause dropped frames in Flutter applications.
-  /// Instead, call these native functions on a separate isolate.
-  int sum_long_running(
-    int a,
-    int b,
-  ) {
-    return _sum_long_running(
-      a,
-      b,
-    );
+  void enforce_binding() {
+    return _enforce_binding();
   }
 
-  late final _sum_long_runningPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
-          'sum_long_running');
-  late final _sum_long_running =
-      _sum_long_runningPtr.asFunction<int Function(int, int)>();
+  late final _enforce_bindingPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('enforce_binding');
+  late final _enforce_binding =
+      _enforce_bindingPtr.asFunction<void Function()>();
 }
+
+final class _GoString_ extends ffi.Opaque {}
+
+final class GoInterface extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> t;
+
+  external ffi.Pointer<ffi.Void> v;
+}
+
+final class GoSlice extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> data;
+
+  @GoInt()
+  external int len;
+
+  @GoInt()
+  external int cap;
+}
+
+typedef GoInt = GoInt64;
+typedef GoInt64 = ffi.LongLong;
+typedef DartGoInt64 = int;
+
+const int NULL = 0;
