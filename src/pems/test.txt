@@ -1,1 +1,0 @@
-its a text from txt file!
