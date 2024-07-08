@@ -1,12 +1,12 @@
 # Run with `dart run ffigen --config ffigen.yaml`.
 name: FaGolangBindings
 description: Bindings.
-output: 'lib/fa_golang_bindings_generated.dart'
+output: 'lib/bindings_generated.dart'
 headers:
   entry-points:
-    - 'src/libfunc.h'
+    - 'src/go_library.h'
   include-directives:
-    - 'src/libfunc.h'
+    - 'src/go_library.h'
 preamble: |
   // ignore_for_file: always_specify_types
   // ignore_for_file: camel_case_types

@@ -4,10 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:ffi/ffi.dart';
 
-import 'fa_golang_bindings_generated.dart';
+import 'bindings_generated.dart';
 
 const String _pkgName = 'fa_golang';
-const String _libName = 'libfunc';
+const String _libName = 'go_library';
 
 /// The dynamic library for each platform
 final DynamicLibrary _dylib = () {
@@ -23,10 +23,9 @@ final DynamicLibrary _dylib = () {
   throw UnsupportedError('Unknown platform: ${Platform.operatingSystem}');
 }();
 
-
-
 /// The bindings to the native functions in [_dylib].
 final FaGolangBindings _bindings = FaGolangBindings(_dylib);
+
 
 int sum(int a, int b) => _bindings.sum(a, b);
 

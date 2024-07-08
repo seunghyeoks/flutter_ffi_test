@@ -2,11 +2,11 @@
 ANDROID_OUT=../android/src/main/jniLibs
 ANDROID_SDK=$(HOME)/Library/Android/sdk
 NDK_BIN=$(ANDROID_SDK)/ndk/27.0.11902837/toolchains/llvm/prebuilt/darwin-x86_64/bin
-LIB_NAME=libfunc
+LIB_NAME=go_library
 
 
 build:
-	go build -buildmode=c-shared -o ${LIB_NAME}.a func.go
+	go build -buildmode=c-shared -o ${LIB_NAME}.a go_interface.go
 
 android-armv7a:
 	CGO_ENABLED=1 \
